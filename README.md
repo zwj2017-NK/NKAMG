@@ -1,2 +1,2 @@
-# nkamg
+# NKAMG
 Malware Traffic Analysis System
