@@ -21,7 +21,6 @@ def nmap(ip):
     # -Pn: Treat all hosts as online -- skip host discovery
     cmd = 'sudo nmap -T4 -A -v -Pn %s' %ip
     output = subprocess.check_output(cmd, shell = True)
-    print(output)
 
     # match = [total, os_info]
     os_patterns = [
@@ -32,7 +31,7 @@ def nmap(ip):
         if re.search(pattern, output):
             print(re.search(pattern, output).group(0))
         else:
-            print('None')
+            print('OS: None')
 
     # match = [total, port_num/port_type, open|filtered, else_info]
     port_pattern = r'(\d+\/\w+)\s+(open|filtered)\s+(.+)'
@@ -42,7 +41,7 @@ def nmap(ip):
             # do not use 'print(item[0])', it is the feature for py3.6
             print(item.group(0))
     else:
-        print('None')
+        print('Port: None')
     
 def main(ip):
     print(location(ip))
