@@ -7,3 +7,6 @@ class Port(dict):
             'state',        # open / filtered
             'name',         # service name
             )
+
+class Host(dict):
+    __slots__ = ('ip', 'ports', 'os')
