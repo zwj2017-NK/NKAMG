@@ -17,10 +17,6 @@ Options:
 '''
 
 import sys, getopt
-try:
-    import docopt
-except ImportError:
-    exit('Require python "docopt" package')
 
 from src.nmap import NmapScanner
 
