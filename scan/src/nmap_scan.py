@@ -13,10 +13,20 @@ except ImportError:
 from info_class import Host, Port
 
 class NmapScanner(object):
+    '''
+
+    This module provides interfaces to execute the nmap command and save interesting information as csv format.
+
+    Usage:
+        from nmap_scanner import NmapScanner
+        scanner = NmapScanner(cmd)
+        scanner.execute() || csv_file = scanner.execute(get_csv = True)
+
+    '''
     def __init__(self, command):
         # nmap comman string
         self._cmd = command
-        self._tmp_file = '~tmp~.xml'
+        self._tmp_file = os.path.dirname(os.path.abspath(__file__)) + os.path.sep + '~tmp~.xml'
         # xml etree
         self._tree = None
         # csv header and data
@@ -26,11 +36,11 @@ class NmapScanner(object):
         self._date = date.today()
         self._csv_file = '..' + os.path.sep + 'data' + os.path.sep
 
-    def execute(self, get_csv_path = False):
+    def execute(self, get_csv = False):
         self._date = date.today()
         self._scan_with_xml_output()
         self._get_csv()
-        if get_csv_path:
+        if get_csv:
             abs_path = os.path.abspath(self._csv_file)
             return abs_path
 
