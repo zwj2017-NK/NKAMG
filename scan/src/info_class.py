@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 class Port(object):
-    __slots__ = ('_protocol', '_portid', '_state', '_name')
+    __slots__ = ()
 
     def __init__(self):
         self.protocol = self.portid = self.state = self.name = ''
